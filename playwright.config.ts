@@ -4,7 +4,7 @@ import { PlaywrightTestConfig, devices } from '@playwright/test';
 const config: PlaywrightTestConfig = {
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 3 : 0,
-  workers: process.env.CI ? 4 : undefined,
+  workers: process.env.CI ? 6 : 6,
   use: {
     trace: 'on-first-retry',
     viewport: { width: 1920, height: 720 }

@@ -11,16 +11,22 @@ on:
     - release-*
     
 jobs:
-  ui-tests:
+  build:
     runs-on: windows-latest # or macos-latest, windows-latest, ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
     - run: npm i -D @playwright/test
     - run: npx playwright install --with-deps
+
+  ui-tests:
+    runs-on: windows-latest # or macos-latest, windows-latest, ubuntu-latest
+    steps:
     - run: npx playwright test
 
+  report:
+    runs-on: windows-latest # or macos-latest, windows-latest, ubuntu-latest
+    steps:
     - uses: actions/upload-artifact@v2
       if: always()
       with:
