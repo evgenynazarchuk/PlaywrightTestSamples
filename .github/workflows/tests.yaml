@@ -1,8 +1,14 @@
-name: Playwright Tests
+name: Playwright Sample Tests
+
 on:
   push:
     branches:
     - master
+    - release-*
+  pull_request:
+    branches:
+    - master
+    - release-*
     
 jobs:
   ui-tests:
@@ -15,9 +21,8 @@ jobs:
     - run: npx playwright install --with-deps
     - run: npx playwright test
 
-    - name: report
+    - uses: actions/upload-artifact@v2
       if: always()
-      uses: actions/upload-artifact@v2
       with:
         name: test-report
         path: playwright-report/
