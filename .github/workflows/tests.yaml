@@ -12,7 +12,9 @@ jobs:
     - run: npm i -D @playwright/test
     - run: npx playwright install --with-deps
     - run: npx playwright test
+    - continue-on-error: true
     - run: zip -r report.zip playwright-report/ test-results/
+    - continue-on-error: true
     - uses: actions/upload-artifact@v2
       with:
         name: report
