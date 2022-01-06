@@ -11,7 +11,7 @@ jobs:
     - uses: actions/setup-node@v2
     - run: npm i -D @playwright/test
     - run: npx playwright install --with-deps
-    - run: npx playwright test --reporter=html
+    - run: npx playwright test
     - uses: actions/upload-artifact@v2
       with:
         name: report
