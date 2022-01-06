@@ -7,7 +7,7 @@ const config: PlaywrightTestConfig = {
   use: {
     trace: 'on-first-retry',
   },
-  reporter: process.env.CI ? 'github' : 'list',
+  reporter: [ ['html', { outputFolder: 'playwright-report' }] ],
   projects: [
     {
       name: 'chromium',
