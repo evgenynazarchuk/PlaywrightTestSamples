@@ -7,7 +7,6 @@ const config: PlaywrightTestConfig = {
   use: {
     trace: 'on-first-retry',
   },
-  reporter: [ ['html', { outputFolder: 'html-report' }] ],
   projects: [
     {
       name: 'chromium',
