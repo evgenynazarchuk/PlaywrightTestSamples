@@ -7,5 +7,6 @@ test('test main page title', async ({ page }) => {
 
 test('test main page screenshot', async ({ page }) => {
     await page.goto('https://playwright.dev/');
+    await page.click('text=Docs')
     expect(await page.screenshot()).toMatchSnapshot('main page.png', { threshold: 0.2 });
 })
