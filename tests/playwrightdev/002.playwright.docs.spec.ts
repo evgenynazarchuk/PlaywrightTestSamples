@@ -10,6 +10,5 @@ test('test docs page title', async ({ page }) => {
 test('test docs page screenshot', async ({ page }) => {
     await page.goto('https://playwright.dev/');
     await page.click('text=Docs')
-    await page.waitForLoadState('networkidle');
     expect(await page.screenshot()).toMatchSnapshot('docs page.png', { threshold: 0.2 });
 })
