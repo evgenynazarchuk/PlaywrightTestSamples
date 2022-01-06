@@ -8,7 +8,7 @@ const config: PlaywrightTestConfig = {
     trace: 'on-first-retry',
     viewport: { width: 1920, height: 720 }
   },
-  reporter: [ ['html', { outputFolder: 'playwright-report' }], ['line'] ],
+  reporter: [ ['dot'], ['line'], ['html', { outputFolder: 'playwright-report' }] ],
   projects: [
     {
       name: 'chromium',
