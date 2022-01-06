@@ -20,11 +20,13 @@ jobs:
     - run: npx playwright install --with-deps
 
   ui-tests:
+    needs: build
     runs-on: windows-latest # or macos-latest, windows-latest, ubuntu-latest
     steps:
     - run: npx playwright test
 
   report:
+    needs: ui-tests
     runs-on: windows-latest # or macos-latest, windows-latest, ubuntu-latest
     steps:
     - uses: actions/upload-artifact@v2
