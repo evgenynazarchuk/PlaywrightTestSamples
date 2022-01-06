@@ -26,11 +26,12 @@ jobs:
     - run: npx playwright test
 
   report:
+    continue-on-error: true
     needs: ui-tests
     runs-on: windows-latest # or macos-latest, windows-latest, ubuntu-latest
     steps:
     - uses: actions/upload-artifact@v2
-      if: always()
+      #if: always()
       with:
         name: test-report
         path: playwright-report/
