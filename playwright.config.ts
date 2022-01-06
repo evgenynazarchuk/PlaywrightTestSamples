@@ -6,6 +6,7 @@ const config: PlaywrightTestConfig = {
   retries: process.env.CI ? 2 : 0,
   use: {
     trace: 'on-first-retry',
+    viewport: { width: 1920, height: 720 }
   },
   reporter: [ ['html', { outputFolder: 'playwright-report' }] ],
   projects: [
