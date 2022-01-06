@@ -12,8 +12,9 @@ jobs:
     - run: npm i -D @playwright/test
     - run: npx playwright install --with-deps
     - run: npx playwright test
-    - run: zip -r report.zip playwright-report/ test-results/
     - uses: actions/upload-artifact@v2
       with:
         name: report
-        path: report.zip
+        path: |
+          playwright-report
+          test-results
