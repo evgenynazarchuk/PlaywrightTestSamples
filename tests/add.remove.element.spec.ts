@@ -18,7 +18,9 @@ test.describe('add, remove element test', () => {
         // arrange
         // act
         // assert
-        expect(await page.screenshot()).toMatchSnapshot('default_page_without_elements.png');
+        const screenshot = await page.screenshot();
+        expect(screenshot).toMatchSnapshot('default_page_without_elements.png');
+        await expect(page).toHaveURL('http://the-internet.herokuapp.com/add_remove_elements/');
     })
 
     test('\
@@ -30,7 +32,8 @@ test.describe('add, remove element test', () => {
         // act
         await page.click('text=Add Element');
         // assert
-        expect(await page.screenshot()).toMatchSnapshot('one_element.png');
+        const screenshot = await page.screenshot();
+        expect(screenshot).toMatchSnapshot('one_element.png');
     })
 
     test('\
@@ -43,7 +46,8 @@ test.describe('add, remove element test', () => {
         // act
         await page.click('text=Delete');
         // assert
-        expect(await page.screenshot()).toMatchSnapshot('empty_element.png');
+        const screenshot = await page.screenshot();
+        expect(screenshot).toMatchSnapshot('empty_element.png');
     })
 
     test('\
@@ -55,7 +59,8 @@ test.describe('add, remove element test', () => {
         await page.click('text=Add Element');
         await page.click('text=Add Element');
         // assert
-        expect(await page.screenshot()).toMatchSnapshot('two_element.png');
+        const screenshot = await page.screenshot();
+        expect(screenshot).toMatchSnapshot('two_element.png');
     })
 
     test('\
@@ -68,7 +73,8 @@ test.describe('add, remove element test', () => {
         // act
         await page.click('text=Delete');
         // assert
-        expect(await page.screenshot()).toMatchSnapshot('delete_one_from_two_element.png');
+        const screenshot = await page.screenshot();
+        expect(screenshot).toMatchSnapshot('delete_one_from_two_element.png');
     })
 
     test('\
@@ -83,6 +89,7 @@ test.describe('add, remove element test', () => {
         await page.click('text=Delete');
         await page.click('text=Delete');
         // assert
-        expect(await page.screenshot()).toMatchSnapshot('delete_all_two_element.png');
+        const screenshot = await page.screenshot();
+        expect(screenshot).toMatchSnapshot('delete_all_two_element.png');
     })
 })

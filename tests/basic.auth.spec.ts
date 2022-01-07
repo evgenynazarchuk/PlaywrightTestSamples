@@ -5,7 +5,8 @@ test.describe('basic auth', () => {
     test('\
     given page with basic auth \
     when use valid login and pass \
-    then successful authorization', async ({ browser }) => {
+    then successful authorization', 
+    async ({ browser }) => {
         // arrange
         const context = await browser.newContext({
             httpCredentials: {
@@ -19,15 +20,15 @@ test.describe('basic auth', () => {
         await page.click('text=Basic Auth');
 
         // assert
-        const message = await page.locator('div.example>p')
-        expect(message).toContainText('Congratulations! You must have the proper credentials.')
-        expect(await page.screenshot()).toMatchSnapshot('successful_auth.png');
+        const screenshot = await page.screenshot();
+        expect(screenshot).toMatchSnapshot('successful_auth.png');
     })
 
     test('\
     given page with basic auth \
     when use invalid login and pass \
-    then unsuccessful authorization', async ({ browser }) => {
+    then unsuccessful authorization', 
+    async ({ browser }) => {
 
         // arrange
         const context = await browser.newContext({
@@ -42,6 +43,7 @@ test.describe('basic auth', () => {
         await page.click('text=Basic Auth');
 
         // assert
-        expect(await page.screenshot()).toMatchSnapshot('unsuccessful_auth.png');
+        const screenshot = await page.screenshot();
+        expect(screenshot).toMatchSnapshot('unsuccessful_auth.png');
     })
 })
