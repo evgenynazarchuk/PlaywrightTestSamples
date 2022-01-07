@@ -83,6 +83,6 @@ test.describe('add, remove element test', () => {
         await page.click('text=Delete');
         await page.click('text=Delete');
         // assert
-        expect(await page.screenshot()).toMatchSnapshot('two_element.png');
+        expect(await page.screenshot()).toMatchSnapshot('delete_all_two_element.png');
     })
 })
