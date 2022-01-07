@@ -1,29 +1,27 @@
-// playwright.config.ts
 import { PlaywrightTestConfig, devices } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 3 : 0,
-  workers: process.env.CI ? 6 : 6,
-  use: {
-    trace: 'on-first-retry',
-    viewport: { width: 1920, height: 720 }
-  },
-  reporter: [ ['dot'], ['line'], ['html', { outputFolder: 'playwright-report' }] ],
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+    forbidOnly: !!process.env.CI,
+    retries: process.env.CI ? 3 : 0,
+    workers: process.env.CI ? 6 : 6,
+    use: {
+      trace: 'on-first-retry',
     },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-  ]
-};
-
-export default config;
+    reporter: [ ['html', { outputFolder: 'playwright-report' }] ],
+    projects: [
+      {
+        name: 'chromium',
+        use: { ...devices['Desktop Chrome'], viewport: { width: 1024, height: 768 } },
+      },
+      {
+        name: 'wide chromium',
+        use: { ...devices['Desktop Chrome'], viewport: { width: 2048, height: 1536 } },
+      },
+      {
+        name: 'iPhone 11 Pro',
+        use: { ...devices['iPhone 11 Pro'] },
+      },
+    ]
+  };
+  
+  export default config;
