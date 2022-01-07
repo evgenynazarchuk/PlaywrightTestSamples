@@ -6,7 +6,7 @@ test.describe('add, remove element test', () => {
     test.beforeEach(async ({ context }) => {
         // arrange
         page = await context.newPage();
-        await page.goto('http://the-internet.herokuapp.com/');;
+        await page.goto('http://the-internet.herokuapp.com/');
         await page.click('text=Add/Remove Elements');
     });
 
