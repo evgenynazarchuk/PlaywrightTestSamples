@@ -1,3 +1,5 @@
+npm init
+
 npm i -D @playwright/test
 
 npx playwright install

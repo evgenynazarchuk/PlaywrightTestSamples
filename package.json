@@ -1,0 +1,28 @@
+{
+  "name": "playwrighttestsamples",
+  "version": "1.0.0",
+  "description": "playwright test samples",
+  "main": "",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evgenynazarchuk/PlaywrightTestSamples.git"
+  },
+  "keywords": [
+    "playwright"
+  ],
+  "author": "evgeny nazarchuk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/evgenynazarchuk/PlaywrightTestSamples/issues"
+  },
+  "homepage": "https://github.com/evgenynazarchuk/PlaywrightTestSamples#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.17.1"
+  }
+}
