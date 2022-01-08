@@ -11,76 +11,89 @@ test.describe('add, remove element test', () => {
     });
 
     test('\
-    given page without elements \
-    when nothing \
-    then screenshot page without elements', 
+    arrange: page without elements \
+    act: nothing \
+    assert: screenshot page without elements', 
     async () => {
         // arrange
         // act
         // assert
+        await expect(page).toHaveTitle('The Internet');
+        await expect(page).toHaveURL('http://the-internet.herokuapp.com/add_remove_elements/');
+        // extended assert
         const screenshot = await page.screenshot();
         expect(screenshot).toMatchSnapshot('default_page_without_elements.png');
-        await expect(page).toHaveURL('http://the-internet.herokuapp.com/add_remove_elements/');
-    })
+    });
 
     test('\
-    given page without elements \
-    when add new element \
-    then screenshot page with one element', 
+    arrange: page without elements \
+    act: add new element \
+    assert: screenshot page with one element', 
     async () => {
         // arrange
         // act
         await page.click('text=Add Element');
         // assert
+        const button = page.locator('#elements>button');
+        const buttonBackgroundColor = await button.evaluate(el => getComputedStyle(el).backgroundColor);
+        const buttonBorderColor = await button.evaluate(el => getComputedStyle(el).borderColor);
+        expect(buttonBackgroundColor === 'rgb(43, 166, 203)').toBeTruthy();
+        expect(buttonBorderColor === 'rgb(34, 132, 161)').toBeTruthy();
+        // extended assert
         const screenshot = await page.screenshot();
         expect(screenshot).toMatchSnapshot('one_element.png');
-    })
+    });
 
     test('\
-    given page with one element \
-    when delete one element \
-    then screenshot page without added element', 
+    arrange: page with one element \
+    act: delete one element \
+    assert: screenshot page without added element', 
     async () => {
         // arrange
         await page.click('text=Add Element');
         // act
         await page.click('text=Delete');
         // assert
+        // extended assert
         const screenshot = await page.screenshot();
         expect(screenshot).toMatchSnapshot('empty_element.png');
-    })
+    });
 
     test('\
-    given page without elements \
-    when add two elements \
-    then screenshot page with two elements', async () => {
+    arrange page without elements \
+    act add two elements \
+    assert screenshot page with two elements', async () => {
         // arrange
         // act
         await page.click('text=Add Element');
         await page.click('text=Add Element');
         // assert
+        const buttonCounter = await page.locator('#elements>button').count();
+        expect(buttonCounter === 2).toBeTruthy();
+        // extended assert
         const screenshot = await page.screenshot();
         expect(screenshot).toMatchSnapshot('two_element.png');
-    })
+    });
 
     test('\
-    given page with two element \
-    when delete one element \
-    then screenshot page with one element', async () => {
+    arrange page with two element \
+    act delete one element \
+    assert screenshot page with one element', async () => {
         // arrange
         await page.click('text=Add Element');
         await page.click('text=Add Element');
         // act
         await page.click('text=Delete');
         // assert
+        // extended assert
         const screenshot = await page.screenshot();
         expect(screenshot).toMatchSnapshot('delete_one_from_two_element.png');
-    })
+    });
 
     test('\
-    given page with two elements \
-    when delete two elements \
-    then screenshot page without elements', 
+    arrange page with two elements \
+    act delete two elements \
+    assert screenshot page without elements', 
     async () => {
         // arrange
         await page.click('text=Add Element');
@@ -89,7 +102,8 @@ test.describe('add, remove element test', () => {
         await page.click('text=Delete');
         await page.click('text=Delete');
         // assert
+        // extended assert
         const screenshot = await page.screenshot();
         expect(screenshot).toMatchSnapshot('delete_all_two_element.png');
-    })
+    });
 })

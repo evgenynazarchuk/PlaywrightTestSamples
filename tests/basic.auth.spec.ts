@@ -3,9 +3,9 @@ import { expect, test } from '@playwright/test'
 test.describe('basic auth', () => {
     
     test('\
-    given page with basic auth \
-    when use valid login and pass \
-    then successful authorization', 
+    arrange page with basic auth \
+    act use valid login and pass \
+    assert successful authorization', 
     async ({ browser }) => {
         // arrange
         const context = await browser.newContext({
@@ -25,9 +25,9 @@ test.describe('basic auth', () => {
     })
 
     test('\
-    given page with basic auth \
-    when use invalid login and pass \
-    then unsuccessful authorization', 
+    arrange page with basic auth \
+    act use invalid login and pass \
+    assert unsuccessful authorization', 
     async ({ browser }) => {
 
         // arrange
